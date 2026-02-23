@@ -147,7 +147,7 @@ let patientId = localStorage.getItem("patientId") || "21025";
 // Fetch patient treatment plan (tp) from backend
 async function fetchPatientTreatments() {
   try {
-    const res = await fetch(`http://localhost:5000/patients/id/${patientId}`);
+    const res = await fetch(`https://dentalpatient-web-application.onrender.com/patients/id/${patientId}`);
     if (!res.ok) throw new Error("Patient not found");
     const patient = await res.json();
 
