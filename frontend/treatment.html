@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // Fetch patient details from backend
-    const res = await fetch(`http://localhost:5000/patients/${patientId}`);
+    const res = await fetch(`https://dentalpatient-web-application.onrender.com/patients/${patientId}`);
     if (!res.ok) throw new Error("Failed to fetch patient data");
 
     const patient = await res.json();
