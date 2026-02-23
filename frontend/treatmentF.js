@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const container = document.getElementById(containerId);
         const innerDiv = container.querySelector('div');
         try {
-            const response = await fetch(`http://localhost:5000/options/${endpoint}`);
+            const response = await fetch(`https://dentalpatient-web-application.onrender.com/options/${endpoint}`);
             if (!response.ok) throw new Error('Failed to load options');
             const options = await response.json();
             innerDiv.innerHTML = options.map(opt => `
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // ------------------ Fetch Patient Info ------------------
     try {
-        const response = await fetch(`http://localhost:5000/patients/id/${patientId}`);
+        const response = await fetch(`https://dentalpatient-web-application.onrender.com/patients/id/${patientId}`);
         if (!response.ok) {
             Swal.fire("Error", "Patient not found!", "error");
             return;
@@ -230,7 +230,7 @@ const logoY = (100-logoHeight)/2 +10;
 
 // Add image
 // Add the logo instead
-const logoPath = "http://localhost:5000/images/logo.png"; // URL served by Express
+const logoPath = "https://dentalpatient-web-application.onrender.com/images/logo.png"; // URL served by Express
 doc.addImage(logoPath, "PNG", (pageWidth - 100) / 2, 60, 100, 50);
 
 
