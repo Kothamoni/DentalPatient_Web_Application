@@ -23,12 +23,15 @@ router.post('/signup', async (req, res) => {
       return res.status(400).json({ message: "Email already registered" });
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const newUser = new User({
+      userId: generateUserId(),   // 🔥 THIS WAS MISSING
       name,
       phone,
       email,
       address,
-      password
+      password: hashedPassword
     });
 
     await newUser.save();
