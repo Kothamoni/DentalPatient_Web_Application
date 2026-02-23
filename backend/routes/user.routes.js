@@ -8,33 +8,38 @@ const router = express.Router();
 function generateUserId() {
   return "DENTAL-" + Math.floor(Math.random() * 1000000);
 }
+//signup
 
-// Signup
-router.post("/signup", async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
     const { name, phone, email, address, password } = req.body;
 
-    const existing = await User.findOne({ email });
-    if (existing) return res.status(400).json({ message: "Email already registered" });
+    if (!name || !phone || !email || !address || !password) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "Email already registered" });
+    }
 
-    const user = new User({
-      userId: generateUserId(),
+    const newUser = new User({
       name,
       phone,
       email,
       address,
-      password: hashedPassword
+      password
     });
 
-    await user.save();
-    res.json({ message: "Signup successful! Please login." });
-  } catch (err) {
-    res.status(500).json({ message: "Error signing up", error: err.message });
+    await newUser.save();
+
+    res.status(201).json({ message: "Signup successful" });
+
+  } catch (error) {
+    console.error("Signup Error:", error);
+    res.status(500).json({ message: "Server error during signup" });
   }
 });
-
 // Login
 router.post("/login", async (req, res) => {
   try {
