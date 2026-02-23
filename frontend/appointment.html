@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Appointments - Ma Dental Care</title>
+<title>Appointments - Smile Dental Care</title>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
@@ -45,7 +45,7 @@ const tbody = document.getElementById('appointments-body');
 
 async function loadAppointments(selectedDate) {
   try {
-    const res = await fetch(`http://localhost:5000/patients/appointments?date=${selectedDate}`);
+    const res = await fetch(`https://dentalpatient-web-application.onrender.com/patients/appointments?date=${selectedDate}`);
     let data = await res.json(); // Use 'let' because we will reassign it after sorting
     
     // ------------------------------------
