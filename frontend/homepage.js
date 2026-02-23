@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isNaN(ageValue) && ageValue > 0) formData.age = ageValue;
 
     try {
-      const response = await fetch("http://localhost:5000/patients/add", {
+      const response = await fetch("https://dentalpatient-web-application.onrender.com/patients/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
