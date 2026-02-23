@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const container = document.getElementById(containerId);
         const innerDiv = container.querySelector('div');
         try {
-            const response = await fetch(`http://localhost:5000/options/${endpoint}`);
+            const response = await fetch(`https://dentalpatient-web-application.onrender.com/options/${endpoint}`);
             if (!response.ok) throw new Error('Failed to load options');
             const options = await response.json();
             innerDiv.innerHTML = options.map(opt => `
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // ------------------ Fetch Patient Info ------------------
     try {
-        const response = await fetch(`http://localhost:5000/patients/id/${patientId}`);
+        const response = await fetch(`https://dentalpatient-web-application.onrender.com/patients/id/${patientId}`);
         if (!response.ok) {
             Swal.fire("Error", "Patient not found!", "error");
             return;
