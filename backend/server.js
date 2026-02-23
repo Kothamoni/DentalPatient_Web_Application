@@ -26,7 +26,7 @@ mongoose.connect(mongoURI, {
 
 // ----------------- Static Files -----------------
 app.use('/images', express.static(path.join(__dirname, 'image')));
-app.use(express.static(path.join(__dirname, '../front-end')));
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // ----------------- API Routes -----------------
 app.use('/patients', require('./routes/patient.routes'));
@@ -38,7 +38,7 @@ app.use('/', require('./routes/user.routes'));
 
 // ----------------- Frontend Catch-all -----------------
 app.get(/.*/, (req, res) => {
-    res.sendFile(path.join(__dirname, '../front-end/login.html'));
+    res.sendFile(path.join(__dirname, '../frontend/login.html'));
 });
 
 // ----------------- Start Server -----------------
