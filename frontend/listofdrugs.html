@@ -31,7 +31,7 @@ async function loadMedicines() {
   const container = document.getElementById("medicineContainer");
 
   try {
-    const res = await fetch("http://localhost:5000/medicines");
+    const res = await fetch("https://dentalpatient-web-application.onrender.com/medicines");
     const medicines = await res.json();
 
     // Clear container
